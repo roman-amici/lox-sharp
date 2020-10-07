@@ -50,10 +50,14 @@ namespace lox_sharp
             var scanner = new Scanner(line);
             var tokens = scanner.Scan();
 
-            foreach (var token in tokens)
+            var parser = new Parser(tokens);
+            var expr = parser.Parse();
+
+            if (expr != null)
             {
-                Console.WriteLine(token);
+                Console.WriteLine(new AstPrinter().ToString(expr));
             }
+
         }
 
         public static void ReportError(int line, string message)

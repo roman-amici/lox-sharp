@@ -9,7 +9,7 @@ namespace lox_sharp
             string l_str = (string)b.Left.Visit(this);
             string r_str = (string)b.Right.Visit(this);
 
-            return $"({b.Operator} {l_str} {r_str}";
+            return $"({b.Operator.Display()} {l_str} {r_str})";
         }
 
         public object CallGrouping(Grouping g)
@@ -25,7 +25,12 @@ namespace lox_sharp
 
         public object CallUnary(Unary u)
         {
-            return $"({u.Operator} {u.Right.Visit(this)}";
+            return $"({u.Operator.Display()} {u.Right.Visit(this)}";
+        }
+
+        public string ToString(Expr e)
+        {
+            return (string)e.Visit(this);
         }
     }
 

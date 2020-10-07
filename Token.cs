@@ -18,6 +18,11 @@ namespace lox_sharp
             Line = line;
         }
 
+        public string Display()
+        {
+            return Lexeme;
+        }
+
         public override string ToString()
         {
             return $"{Type} '{Lexeme}' {Literal}";
