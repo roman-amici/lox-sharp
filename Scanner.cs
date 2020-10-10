@@ -95,7 +95,7 @@ namespace lox_sharp
 
             Advance(); //Consume the final "
 
-            string inner = SourceLine.Substring(Start + 1, Current - Start - 1);
+            string inner = SourceLine.Substring(Start + 1, Current - Start - 2);
             AddToken(TokenType.String, inner);
         }
 

@@ -4,8 +4,13 @@ namespace lox_sharp
 {
     class Lox
     {
+
+        static Interpreter interpreter = new Interpreter();
+
+
         static void Main(string[] args)
         {
+
             if (args.Length > 1)
             {
                 Console.WriteLine("Usage: jlox [script]");
@@ -55,9 +60,11 @@ namespace lox_sharp
 
             if (expr != null)
             {
-                Console.WriteLine(new AstPrinter().ToString(expr));
+                if (!interpreter.Interpret(expr))
+                {
+                    Environment.Exit(70);
+                }
             }
-
         }
 
         public static void ReportError(int line, string message)
